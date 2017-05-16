@@ -82,7 +82,7 @@ While the test is running open up another terminal on your machine and verify us
     25328 stefan    39  19  534760 145088  15576 R 100,0  1,8   1:35.90 mdrun_mpi_d.ope                                                                                                                                                          
     25329 stefan    39  19  527960 139272  15252 R 100,0  1,8   1:35.90 mdrun_mpi_d.ope
 
-After a few minutes the test should have finished and you can exit the container. Note that performance may be much worse than you're used to due to lacking AVX2 support!
+After a few minutes the test should have finished and you can exit the container. Note that performance may be worse than you're expected due to lacking AVX2 support!
 
     stefan@meltingpot:/tmp$ exit
 
