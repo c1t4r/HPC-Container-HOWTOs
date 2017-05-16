@@ -12,7 +12,7 @@ This package is a custom build for RedHat 7 but should work also on CentOS, Fedo
 
 [Download](../data/singularity-container_2.2-1_amd64.deb "singularity version 2.2.1 stable 64 bit") the deb package
 
-This package is a custom build for Linux Mint 17 but should work also on Ubuntu 16.06 and Debian 7 and similar distributions.
+This package is a custom build for Linux Mint 17 but should work also on Ubuntu 16.04 and Debian 7 and similar distributions.
 
 ## First steps
 
