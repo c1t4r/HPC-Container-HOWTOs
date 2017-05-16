@@ -116,9 +116,13 @@ Copy the data file
     sudo singularity exec -w testcontainer.img mkdir /data
     sudo singularity copy testcontainer.img ion_channel.tpr /data/ion_channel.tpr
     
-Test-run the container
+Test-run the container (using two MPI threads)
 
     time ./testcontainer.img
+    (...)
+    real	2m43.174s
+    user	5m25.476s
+    sys	0m0.252s
     
 Now copy this container to justus and run it there as well
 
