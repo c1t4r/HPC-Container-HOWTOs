@@ -130,4 +130,9 @@ Now copy this container to justus and run it there as well
     
     ssh yourusername@justus
     ssh n0726
-    ./testcontainer.img
+    time ./testcontainer.img
+    (...)
+    real	2m21.810s
+    user	4m43.179s
+    sys	0m0.436s
+
