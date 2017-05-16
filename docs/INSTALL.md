@@ -105,7 +105,7 @@ So let's create a run script
     source /usr/share/gromacs/shell-specific/GMXRC.bash
     OMP_NUM_THREADS=1 mpirun -n 2 gmx_mpi_d mdrun -s /data/ion_channel.tpr -maxh 0.50 -noconfout -nsteps 500 -g logfile -v > /tmp/mdrun.out
     EOF
-    cp 
+    chmod 755 ./singularity 
 
 and copy it into the container
 
