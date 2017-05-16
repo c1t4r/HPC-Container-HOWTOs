@@ -14,7 +14,7 @@ This package is a custom build for RedHat 7 but should work also on CentOS, Fedo
 
 This package is a custom build for Linux Mint 17 but should work also on Ubuntu 16.04 and Debian 7 and similar distributions.
 
-## Create a gromacs container
+## Creating a gromacs container
 
 At the beginning we create a container
 
@@ -86,7 +86,7 @@ After a few minutes the test should have finished and you can exit the container
 
     stefan@meltingpot:/tmp$ exit
 
-## Port container to JUSTUS (or other hosts)
+## Making container ready for export to another host
 
 A few things must still be done to be able to redistribute this container:
 1. Include example run script
