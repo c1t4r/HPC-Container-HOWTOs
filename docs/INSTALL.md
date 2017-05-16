@@ -44,8 +44,9 @@ Now we can import a standard Ubuntu into it
 Next, we start a root shell inside the container and install some software
 
     sudo singularity exec -w testcontainer.img /bin/bash
-    root@meltingpot:/tmp# id && ls .
-    
+    root@meltingpot:/tmp# id
+    uid=0(root) gid=0(root) groups=0(root)
+
 You should find you are root now inside the container (because of sudo)
     
     root@meltingpot:/tmp# apt update
