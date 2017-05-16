@@ -126,7 +126,7 @@ Test-run the container (using two MPI threads)
     
 Now copy this container to justus and run it there as well
 
-    rsync -rahzvp testcontainer.img justus:
+    rsync -rahzvP testcontainer.img justus:
     
     ssh yourusername@justus
     ssh n0726
