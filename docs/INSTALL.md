@@ -103,18 +103,18 @@ So let's create a run script
     cat <<EOF > singularity
     #!/bin/bash
     source /usr/share/gromacs/shell-specific/GMXRC.bash
-    OMP_NUM_THREADS=1 mpirun -n 2 gmx_mpi_d mdrun -s /data/ion_channel.tpr -maxh 0.50 -noconfout -nsteps 500 -g logfile -v > /tmp/mdrun.out
+    OMP_NUM_THREADS=1 mpirun -n 2 mdrun_mpi_d.openmpi mdrun -s /data/ion_channel.tpr -maxh 0.50 -noconfout -nsteps 500 -g logfile -v > /tmp/mdrun.out
     EOF
     chmod 755 ./singularity 
 
 and copy it into the container
 
-    sudo singularity cp ./singularity testcontainer.img /singularity
+    sudo singularity copy testcontainer.img ./singularity /singularity
     
 Copy the data file
 
     sudo singularity exec -w testcontainer.img mkdir /data
-    sudo singularity cp ion_channel.tpr testcontainer.img /data/ion_channel.tpr
+    sudo singularity copy testcontainer.img ion_channel.tpr /data/ion_channel.tpr
     
 Now copy this container to justus and run it there as well
 
