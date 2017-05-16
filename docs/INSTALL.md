@@ -116,6 +116,10 @@ Copy the data file
     sudo singularity exec -w testcontainer.img mkdir /data
     sudo singularity copy testcontainer.img ion_channel.tpr /data/ion_channel.tpr
     
+Test-run the container
+
+    time ./testcontainer.img
+    
 Now copy this container to justus and run it there as well
 
     rsync -rahzvp testcontainer.img justus:
