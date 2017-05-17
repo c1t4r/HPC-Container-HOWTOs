@@ -6,7 +6,7 @@ You need a personal computer with root access to install singularity and create 
 As of now the singularity runtime cannot be used under nonprivileged user accounts for that purpose, although this may become possible in future versions.
 
 ### RPM package
-.
+
 [Download](../data/singularity-2.2.1-0.1.el7.x86_64.rpm "singularity version 2.2.1 stable 64 bit") the rpm package
 
 This package is a custom build for RedHat 7 but should work also on CentOS, Fedora, OpenSuSE and similar distributions.
