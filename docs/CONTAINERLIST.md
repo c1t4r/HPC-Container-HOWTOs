@@ -1,8 +1,6 @@
 # Currently available containers on JUSTUS
 
-Singularity container images are available under the following path: 
-
-`/nfs/home1/CiTAR/images`
+Singularity container images are available under the following path: `/nfs/home1/CiTAR/images`
 
 | Image Name | Contained Software | Accessible |
 |-------|:------------------:|----------------:|
