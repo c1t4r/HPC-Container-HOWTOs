@@ -162,7 +162,7 @@ Now copy this container to justus and run it there as well
     user	4m43.179s
     sys	0m0.436s
 
-## Creating a container using a bootstrap file
+### Automatic creation of a Gromacs container using a bootstrap file
 
 Bootstrap files serve as singularity container building scripts (comparable to what Dockerfiles are for Docker). 
 Once the previous procedure has somewhat matured it is useful to create a bootstrap file because it simplifies the rebuilding process for a custom container dramatically.
