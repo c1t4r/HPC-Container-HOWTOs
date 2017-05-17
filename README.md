@@ -16,4 +16,4 @@ These are the docs so far:
 
 * Intro Software Containers - ABOUT TO COME
 * Getting started with using singularity on your local PC: [install singularity and create your first custom container](./docs/INSTALL.md)
-* [List of containers](./docs/CONTAINERLIST.md) available on JUSTUS (updated occasionally)
+* Software containers on JUSTUS: [List of containers](./docs/CONTAINERLIST.md) currently available (updated occasionally)
