@@ -1,22 +1,42 @@
-# Installation and Creation of an example container
+# Singularity Containers on your local computer
 
-## Install singularity on your personal computer
+## Prerequisites
+
+You need a personal computer with root access to install singularity and create containers. 
+As of now the singularity runtime cannot be used under nonprivileged user accounts for that purpose, although this may become possible in future versions.
 
 ### RPM package
-
+.
 [Download](../data/singularity-2.2.1-0.1.el7.x86_64.rpm "singularity version 2.2.1 stable 64 bit") the rpm package
 
 This package is a custom build for RedHat 7 but should work also on CentOS, Fedora, OpenSuSE and similar distributions.
+Install it using `yum install singularity-2.2.1-0.1.el7.x86_64.rpm`
 
 ### DEB package
 
-[Download](../data/singularity-container_2.2-1_amd64.deb "singularity version 2.2.1 stable 64 bit") the deb package
+[Download](../data/singularity-container_2.2-1_amd64.deb "singularity version 2.2.1 stable 64 bit") the deb package.
 
 This package is a custom build for Linux Mint 17 but should work also on Ubuntu 16.04 and Debian 7 and similar distributions.
+Install it using `apt install singularity-container_2.2-1_amd64.deb`
 
-## Creating a gromacs container
+## Creating a custom container
 
-At the beginning we create a container
+There are two main methods to create a custom container on a computer you have root access to.
+1. Manually, step-by-step
+2. Using a bootstrap file
+
+We will demonstrate both methods using Ubuntu and the system repository to create a container running a MPI-enabled version of Gromacs.
+
+### Manual creation of a Gromacs container
+
+This method is usually the first attempt to create a custom container because it allows interactive installation, checks and improvements until it all works to satisfaction.
+The procedure is as follows:
+1. Create an empty container file
+2. Choose a linux base system (CentOS, Ubuntu...)
+3. Install and configure until it suits the purpose i.e. the desired software works
+4. Add custom data/scripts to make it portable
+
+At the beginning we create a container (1)
 
     cd /tmp
     sudo singularity create -s 4096 testcontainer.img
@@ -25,7 +45,7 @@ At the beginning we create a container
     Formatting image with ext3 file system
     Done.`
 
-Now we can import a standard Ubuntu into it
+Now we can import a standard Ubuntu into it (2)
 
     sudo singularity import testcontainer.img docker://ubuntu:16.04
     Downloading layer: sha256:a3ed95caeb02ffe68cdd9fd84406680ae93d633cb16422d00e8a7c22955b46d4
@@ -41,7 +61,7 @@ Now we can import a standard Ubuntu into it
     Executing Postbootstrap module
     Done.
 
-Next, we start a root shell inside the container and install some software
+Next, we start a root shell inside the container and install some software (3)
 
     sudo singularity exec -w testcontainer.img /bin/bash
     root@meltingpot:/tmp# id
@@ -53,6 +73,12 @@ You should find you are root now inside the container (because of sudo)
     (...)
     root@meltingpot:/tmp# apt install gromacs gromacs-openmpi gromacs-data
     (...)
+    
+There is still plenty of empty space available to add software or user data/scripts to the container
+    
+    root@meltingpot:/tmp# df -h /
+    Filesystem      Size  Used Avail Use% Mounted on
+    /dev/loop0      3.9G  405M  3.3G  11% /
     root@meltingpot:/tmp# exit
     
 Finally, download a sample gromacs file
@@ -86,7 +112,7 @@ After a few minutes the test should have finished and you can exit the container
 
     stefan@meltingpot:/tmp$ exit
 
-## Making container ready for export to another host
+Now we are preparing the container for export to JUSTUS (4)
 
 A few things must still be done to be able to redistribute this container:
 1. Include example run script
@@ -136,3 +162,15 @@ Now copy this container to justus and run it there as well
     user	4m43.179s
     sys	0m0.436s
 
+## Creating a container using a bootstrap file
+
+Bootstrap files serve as singularity container building scripts (comparable to what Dockerfiles are for Docker). 
+Once the previous procedure has somewhat matured it is useful to create a bootstrap file because it simplifies the rebuilding process for a custom container dramatically.
+
+This is a bootstrap definition file for the previous gromacs container. Simply run
+
+    sudo singularity create testcontainer2.img
+    sudo singularity bootstrap testcontainer2.img gromacs_ubuntu.spec
+    
+to create the same container in a single step.
+Here you can find more info about the bootstrap file format definition and how to create your own bootstrap definitions.
