@@ -74,7 +74,7 @@ You should find that you are now standard user inside your container and that th
 Now source the gromacs environment and run a short test
 
     stefan@meltingpot:/tmp$ source /usr/share/gromacs/shell-specific/GMXRC.bash
-    stefan@meltingpot:/tmp$ OMP_NUM_THREADS=1 mpirun -n 2 gmx_mpi_d mdrun -s ion_channel.tpr -maxh 0.50 -noconfout -nsteps 500 -g logfile -v > mdrun.out
+    stefan@meltingpot:/tmp$ OMP_NUM_THREADS=1 mpirun -n 2 mdrun_mpi.openmpi mdrun -s ion_channel.tpr -maxh 0.50 -noconfout -nsteps 500 -g logfile -v > mdrun.out
     (...)
     
 While the test is running open up another terminal on your machine and verify using `top` that the MPI processes are actually running
