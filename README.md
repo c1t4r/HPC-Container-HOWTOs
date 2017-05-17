@@ -7,10 +7,10 @@ We aim specifically at scientists of TheoChem/TheoPhys of Ulm University to conc
 The pages will develop while the technical environment evolves.
 Follow it here and join as test user to ensure that the upcoming 2nd gen JUSTUS will best match your experimental needs!
 
-These pages are for you if you...
-* want to experiment with software containers on bwForCluster JUSTUS
-* want a specific software running on JUSTUS and the software is available in a containerized format
-* are responsible for installing and maintaining customized software installations for a group of scientists
+These pages are for you if you are...
+* experimenting with software containers on bwForCluster JUSTUS
+* occasionally making specific software running on JUSTUS and the software is available in a containerized format
+* responsible for installation and maintenance of customized software installations for groups of scientists in the HPC field
 
 These are the docs so far:
 
