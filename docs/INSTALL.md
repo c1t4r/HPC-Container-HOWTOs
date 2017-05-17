@@ -167,10 +167,32 @@ Now copy this container to justus and run it there as well
 Bootstrap files serve as singularity container building scripts (comparable to what Dockerfiles are for Docker). 
 Once the previous procedure has somewhat matured it is useful to create a bootstrap file because it simplifies the rebuilding process for a custom container dramatically.
 
-This is a bootstrap definition file for the previous gromacs container. Simply run
+This is a bootstrap definition file for the previous gromacs container:
+
+    cat << EOF > gromacs_ubuntu.def
+    BootStrap: docker
+    From: ubuntu:16.04
+    IncludeCmd: yes
+
+    %runscript
+    #!/bin/bash
+    source /usr/share/gromacs/shell-specific/GMXRC.bash
+    OMP_NUM_THREADS=1 mpirun -n 2 mdrun_mpi_d.openmpi \
+    mdrun -s /data/ion_channel.tpr -maxh 0.50 -noconfout -nsteps 500 -g logfile -v > /tmp/mdrun.out
+
+    %setup
+    mkdir -p $SINGULARITY_ROOTFS/data
+    cp ./ion_channel.tpr $SINGULARITY_ROOTFS/data
+
+    %post
+    apt -y update
+    apt -y install gromacs gromacs-openmpi gromacs-data
+    EOF
+
+Copy and paste this snippet in your shell to create `gromacs_ubuntu.def` and simply run
 
     sudo singularity create testcontainer2.img
-    sudo singularity bootstrap testcontainer2.img gromacs_ubuntu.spec
+    sudo singularity bootstrap testcontainer2.img gromacs_ubuntu.def
     
 to create the same container in a single step.
-Here you can find more info about the bootstrap file format definition and how to create your own bootstrap definitions.
+[Here](http://singularity.lbl.gov/bootstrap-image) you can find more info about the bootstrap file format definition and how to create your own bootstrap definitions.
