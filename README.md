@@ -2,8 +2,8 @@
 
 Welcome dear reader!
 
-we are specifically aiming at scientists of TheoChem/TheoPhys of Ulm University to conceptualize well-working experimentation workflows for the future of computational research.
-Here we put information about the experimental containerization support which is available for bwForCluster JUSTUS as of now.
+Here we gather information about the experimental containerization support which is available for bwForCluster JUSTUS as of now.
+We aim specifically at scientists of TheoChem/TheoPhys of Ulm University to conceptualize well-working experimentation workflows for the future of computational research.
 The pages will develop while the technical environment evolves.
 Follow it here and join as test user to ensure that the upcoming 2nd gen JUSTUS will best match your experimental needs!
 
