@@ -8,9 +8,9 @@ The pages will develop while the technical environment evolves.
 Follow it here and join as test user to ensure that the upcoming 2nd gen JUSTUS will best match your experimental needs!
 
 These pages are for you if you are...
-* experimenting with software containers on bwForCluster JUSTUS
-* occasionally making specific software running on JUSTUS and the software is available in a containerized format
-* responsible for installation and maintenance of customized software installations for groups of scientists in the HPC field
+* running scientific experiments in the scope of TheoChem and TheoPhys of Ulm University
+* interested in running containerized software on bwForCluster JUSTUS
+* responsible for installation and maintenance of customized software installations for groups of scientists in the HPC field being used on two or more target platforms
 
 These are the docs so far:
 
