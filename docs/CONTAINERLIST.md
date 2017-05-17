@@ -28,3 +28,10 @@ If you have permissions you can copy the container image and customize it to you
     me@localpc: ~ $ scp justus:/nfs/home1/CiTAR/images/DaCapo_VMD.sapp-2017-05-09-13-22.img .
     
 Now you can use and modify the image as you wish and copy it later back to JUSTUS.
+
+## Using VMD
+
+If you want to use VMD for visualizing some results just use `-Y` for the ssh command.
+Here is an example of how that might look like :)
+
+![Vasp and VMD](VASP_and_VMD.png)
