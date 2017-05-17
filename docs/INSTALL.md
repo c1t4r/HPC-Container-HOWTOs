@@ -196,3 +196,14 @@ Copy and paste this snippet in your shell to create `gromacs_ubuntu.def` and sim
     
 to create the same container in a single step.
 [Here](http://singularity.lbl.gov/bootstrap-image) you can find more info about the bootstrap file format definition and how to create your own bootstrap definitions.
+This should run fine and without errors, and then you can execute the container as the previous one:
+
+    time ./testcontainer2.img
+    (...)
+    real	2m24.789s
+    user	4m49.095s
+    sys	0m0.479s
+
+    
+    
+Congratulations, you are finished :)
