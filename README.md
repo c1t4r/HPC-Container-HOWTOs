@@ -1,6 +1,6 @@
 # HPC Containers on bwForCluster JUSTUS
 
-Welcome, dear reader!
+Welcome dear reader!
 
 These pages are for you if you
 * want to experiment with software containers on bwForCluster JUSTUS
