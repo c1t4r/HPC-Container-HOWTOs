@@ -94,7 +94,7 @@ Enter the container using `bash`
 
 You should find that you are now standard user inside your container and that the contents of `/tmp` are shared between host and container
 
-    stefan@meltingpot:~$ id
+    stefan@meltingpot:/tmp$ id
     uid=1000(stefan) gid=1000(stefan) groups=1000(stefan),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),107,110,125,500090(vasp_users)
     stefan@meltingpot:/tmp$ ls 
     firefox_stefan	hsperfdata_root  mintUpdate			       orbit-stefan  singularity-container_2.2-1_amd64.deb  singularity_2.2-1_amd64.changes  ssh-NUEP9lMyKHDt	tmp.uH2YJ6jpR1	tmpd_fYpy
