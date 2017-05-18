@@ -84,15 +84,18 @@ There is still plenty of empty space available to add software or user data/scri
 Finally, download a sample gromacs file
 
     scp yourusername@justus:/opt/bwhpc/common/chem/gromacs/5.1.4/bwhpc-examples/ion_channel.tpr .
+    
+Enter the container using `bash`
+
     singularity exec testcontainer.img /bin/bash
     groups: cannot find name for group ID 107
     groups: cannot find name for group ID 110
     groups: cannot find name for group ID 125
-    stefan@meltingpot:~$ id
-    uid=1000(stefan) gid=1000(stefan) groups=1000(stefan),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),107,110,125,500090(vasp_users)
 
 You should find that you are now standard user inside your container and that the contents of `/tmp` are shared between host and container
 
+    stefan@meltingpot:~$ id
+    uid=1000(stefan) gid=1000(stefan) groups=1000(stefan),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),107,110,125,500090(vasp_users)
     stefan@meltingpot:/tmp$ ls 
     firefox_stefan	hsperfdata_root  mintUpdate			       orbit-stefan  singularity-container_2.2-1_amd64.deb  singularity_2.2-1_amd64.changes  ssh-NUEP9lMyKHDt	tmp.uH2YJ6jpR1	tmpd_fYpy
     gpg-2xGcVB	ion_channel.tpr  openmpi-sessions-stefan@meltingpot_0  singularity   singularity-test.iDusMr		    sni-qt_keepassx_8967-rlxQtE      testcontainer.img	tmpGHNsdK
