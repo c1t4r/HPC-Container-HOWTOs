@@ -25,7 +25,7 @@ There are two main methods to create a custom container on a computer you have r
 1. Manually, step-by-step
 2. Using a bootstrap file
 
-We will demonstrate both methods using Ubuntu and the system repository to create a container running a MPI-enabled version of Gromacs.
+We will demonstrate both methods using Ubuntu and the packages offered by its system repository to create a container running a MPI-enabled version of Gromacs.
 
 ### Manual creation of a Gromacs container
 
