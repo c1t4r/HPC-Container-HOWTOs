@@ -43,7 +43,7 @@ At the beginning we create a container (1)
     Creating a new image with a maximum size of 4096MiB...
     Executing image create helper
     Formatting image with ext3 file system
-    Done.`
+    Done.
 
 Now we can import a standard Ubuntu into it (2)
 
