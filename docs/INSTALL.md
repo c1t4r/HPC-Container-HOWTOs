@@ -7,7 +7,7 @@ As of now the singularity runtime cannot be used under nonprivileged user accoun
 
 ### RPM package
 
-[Download](../data/singularity-2.2.1-0.1.el7.x86_64.rpm "singularity version 2.2.1 stable 64 bit") the rpm package
+[Download](../data/singularity-2.2.1-0.1.el7.x86_64.rpm "singularity version 2.2.1 stable 64 bit") the rpm package.
 
 This package is a custom build for RedHat 7 but should work also on CentOS, Fedora, OpenSuSE and similar distributions.
 Install it using `yum install singularity-2.2.1-0.1.el7.x86_64.rpm`
