@@ -121,13 +121,7 @@ A few things must still be done to be able to redistribute this container:
 1. Include example run script
 2. Include example data file
 
-Singularity containers have an default run script under `/singularity`
-This is invoked if we execute the container like so
-
-    chmod +x testcontainer.img
-    ./testcontainer.img
-    
-So let's create a run script
+Singularity containers have an default run script under `/singularity`. So let's create it:
 
     cat <<EOF > singularity
     #!/bin/bash
@@ -136,7 +130,7 @@ So let's create a run script
     EOF
     chmod 755 ./singularity 
 
-and copy it into the container
+And copy it into the container
 
     sudo singularity copy testcontainer.img ./singularity /singularity
     
@@ -173,7 +167,7 @@ Bootstrap files serve as singularity container building scripts (comparable to w
 Once the installation procedure for a certain container has somewhat matured it is useful to create a bootstrap 
 file because it dramatically simplifies the rebuilding process for a custom container especially for end users.
 
-This is a bootstrap definition file for a gromacs container:
+This is a bootstrap definition file for the previous gromacs container:
 
     cat << EOF > gromacs_ubuntu.def
     BootStrap: docker
