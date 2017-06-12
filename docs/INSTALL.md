@@ -31,6 +31,53 @@ There are two main methods to create a custom container on a computer you have r
 
 We will demonstrate both methods using Ubuntu and the packages offered by its system repository to create a container running a MPI-enabled version of Gromacs.
 
+### Automatic creation of a Gromacs container using a bootstrap file
+
+Bootstrap files serve as singularity container building scripts (comparable to what Dockerfiles are for Docker). 
+Once the installation procedure for a certain container has somewhat matured it is useful to create a bootstrap 
+file because it dramatically simplifies the rebuilding process for a custom container especially for end users.
+
+This is a bootstrap definition file for the previous gromacs container:
+
+    cat << EOF > gromacs_ubuntu.def
+    BootStrap: docker
+    From: ubuntu:16.04
+    IncludeCmd: yes
+
+    %runscript
+    #!/bin/bash
+    source /usr/share/gromacs/shell-specific/GMXRC.bash
+    OMP_NUM_THREADS=1 mpirun -n 2 mdrun_mpi_d.openmpi \
+    mdrun -s /data/ion_channel.tpr -maxh 0.50 -noconfout -nsteps 500 -g logfile -v > /tmp/mdrun.out
+
+    %setup
+    mkdir -p $SINGULARITY_ROOTFS/data
+    cp ./ion_channel.tpr $SINGULARITY_ROOTFS/data
+    
+    %files
+    ./ion_channel.tpr /data/ion_channel.tpr
+
+    %post
+    apt -y update
+    apt -y install gromacs gromacs-openmpi gromacs-data
+    mkdir -p /data
+    EOF
+
+Copy and paste this snippet in your shell to create `gromacs_ubuntu.def` and simply run
+
+    singularity create testcontainer2.img
+    sudo singularity bootstrap testcontainer2.img gromacs_ubuntu.def
+    
+to create the same container in a single step.
+[Here](http://singularity.lbl.gov/bootstrap-image) you can find more info about the bootstrap file format definition and how to create your own bootstrap definitions.
+This should complete without errors, and then you can execute the container as the previous one:
+
+    time ./testcontainer2.img
+    (...)
+    real	2m24.789s
+    user	4m49.095s
+    sys	0m0.479s
+
 ### Manual creation of a Gromacs container
 
 This method is usually the first attempt to create a custom container because it allows interactive installation, checks and improvements until it all works to satisfaction.
@@ -165,53 +212,4 @@ Now copy this container to justus and run it there as well
     user	4m43.179s
     sys	0m0.436s
 
-### Automatic creation of a Gromacs container using a bootstrap file
-
-Bootstrap files serve as singularity container building scripts (comparable to what Dockerfiles are for Docker). 
-Once the installation procedure for a certain container has somewhat matured it is useful to create a bootstrap 
-file because it dramatically simplifies the rebuilding process for a custom container especially for end users.
-
-This is a bootstrap definition file for the previous gromacs container:
-
-    cat << EOF > gromacs_ubuntu.def
-    BootStrap: docker
-    From: ubuntu:16.04
-    IncludeCmd: yes
-
-    %runscript
-    #!/bin/bash
-    source /usr/share/gromacs/shell-specific/GMXRC.bash
-    OMP_NUM_THREADS=1 mpirun -n 2 mdrun_mpi_d.openmpi \
-    mdrun -s /data/ion_channel.tpr -maxh 0.50 -noconfout -nsteps 500 -g logfile -v > /tmp/mdrun.out
-
-    %setup
-    mkdir -p $SINGULARITY_ROOTFS/data
-    cp ./ion_channel.tpr $SINGULARITY_ROOTFS/data
-    
-    %files
-    ./ion_channel.tpr /data/ion_channel.tpr
-
-    %post
-    apt -y update
-    apt -y install gromacs gromacs-openmpi gromacs-data
-    mkdir -p /data
-    EOF
-
-Copy and paste this snippet in your shell to create `gromacs_ubuntu.def` and simply run
-
-    singularity create testcontainer2.img
-    sudo singularity bootstrap testcontainer2.img gromacs_ubuntu.def
-    
-to create the same container in a single step.
-[Here](http://singularity.lbl.gov/bootstrap-image) you can find more info about the bootstrap file format definition and how to create your own bootstrap definitions.
-This should complete without errors, and then you can execute the container as the previous one:
-
-    time ./testcontainer2.img
-    (...)
-    real	2m24.789s
-    user	4m49.095s
-    sys	0m0.479s
-
-    
-    
 Congratulations, you are finished :)
