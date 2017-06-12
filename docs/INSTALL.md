@@ -26,8 +26,8 @@ Install it using `apt install singularity-container_2.3-1_amd64.deb`
 ## Creating a custom container
 
 There are two main methods to create a custom container on a computer you have root access to.
-1. Manually, step-by-step
-2. Using a bootstrap file
+1. Automatically - using a bootstrap file
+2. Manually - step-by-step
 
 We will demonstrate both methods using Ubuntu and the packages offered by its system repository to create a container running a MPI-enabled version of Gromacs.
 
@@ -168,7 +168,8 @@ Now copy this container to justus and run it there as well
 ### Automatic creation of a Gromacs container using a bootstrap file
 
 Bootstrap files serve as singularity container building scripts (comparable to what Dockerfiles are for Docker). 
-Once the previous procedure has somewhat matured it is useful to create a bootstrap file because it simplifies the rebuilding process for a custom container dramatically.
+Once the installation procedure for a certain container has somewhat matured it is useful to create a bootstrap 
+file because it dramatically simplifies the rebuilding process for a custom container especially for end users.
 
 This is a bootstrap definition file for the previous gromacs container:
 
