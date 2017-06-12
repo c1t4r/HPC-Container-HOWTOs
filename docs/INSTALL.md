@@ -151,7 +151,7 @@ Now copy this container to justus and run it there as well
 
     rsync -rahzvP testcontainer.img justus.uni-ulm.de:
     
-    ssh yourusername@justus
+    ssh yourusername@justus.uni-ulm.de
     ssh n0726
     time ./testcontainer.img
     (...)
