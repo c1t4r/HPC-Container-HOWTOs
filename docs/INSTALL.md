@@ -86,7 +86,7 @@ There is still plenty of empty space available to add software or user data/scri
     
 Finally, download a sample gromacs file
 
-    scp yourusername@justus:/opt/bwhpc/common/chem/gromacs/5.1.4/bwhpc-examples/ion_channel.tpr .
+    scp yourusername@justus.uni-ulm.de:/opt/bwhpc/common/chem/gromacs/5.1.4/bwhpc-examples/ion_channel.tpr .
     
 Enter the container using `bash`
 
@@ -155,7 +155,7 @@ Test-run the container (using two MPI threads)
     
 Now copy this container to justus and run it there as well
 
-    rsync -rahzvP testcontainer.img justus:
+    rsync -rahzvP testcontainer.img justus.uni-ulm.de:
     
     ssh yourusername@justus
     ssh n0726
