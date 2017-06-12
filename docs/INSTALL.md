@@ -1,9 +1,13 @@
-# Singularity Containers on your local computer
+# Bring Your Own Environment - Create Singularity Containers on your local computer
+
+## About
+
+This document shows by example how users can create their custom containers on their personal computers and export them to the HPC system JUSTUS.
 
 ## Prerequisites
 
-You need a personal computer with root access to install singularity and create containers. 
-As of now the singularity runtime cannot be used under nonprivileged user accounts for that purpose, although this may become possible in future versions. This document uses version 2.3 of singularity.
+You will need a personal computer with root access to install singularity and create containers. 
+As of now the singularity runtime cannot be utilized fully under nonprivileged user accounts for that purpose, although this may become possible in future versions. This document uses version 2.3 of singularity.
 
 ### RPM package
 
