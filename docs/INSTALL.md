@@ -68,15 +68,17 @@ Copy and paste this snippet in your shell to create `gromacs_ubuntu.def` and sim
     singularity create testcontainer2.img
     sudo singularity bootstrap testcontainer2.img gromacs_ubuntu.def
     
-to create the container in a single step.
-[Here](http://singularity.lbl.gov/bootstrap-image) you can find more info about the bootstrap file format definition and how to create your own bootstrap definitions.
-This should complete without errors, and then you can execute the container as the previous one:
+to create the container in a single step. This should complete without errors, and then you can execute the containers default run script:
 
     time ./testcontainer2.img
     (...)
     real	2m24.789s
     user	4m49.095s
     sys	0m0.479s
+
+If you are interested in details about the bootstrap definition file format you can find more informattion about it [here](http://singularity.lbl.gov/bootstrap-image).
+To understand each step that is involved in successive creation of a container reading the following section is recommended. It should also help to understand the bootstrap script.
+
 
 ### Manual creation of a Gromacs container
 
