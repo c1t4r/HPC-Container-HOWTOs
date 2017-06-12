@@ -40,30 +40,29 @@ At the beginning we create a container (1)
 
     cd /tmp
     singularity create -s 4096 testcontainer.img
-    Creating a new image with a maximum size of 4096MiB...
-    Executing image create helper
-    Formatting image with ext3 file system
-    Done.
+    Creating 4096MiB image
+    Binding image to loop
+    Creating file system within image
+    Image is done: testcontainer.img
 
 Now we can import a standard Ubuntu into it (2)
 
     singularity import testcontainer.img docker://ubuntu:16.04
-    Downloading layer: sha256:a3ed95caeb02ffe68cdd9fd84406680ae93d633cb16422d00e8a7c22955b46d4
-    Downloading layer: sha256:cf9722e506aada1109f5c00a9ba542a81c9e109606c01c81f5991b1f93de7b66
-    Downloading layer: sha256:3deef3fcbd3072b45771bd0d192d4e5ff2b7310b99ea92bce062e01097953505
-    Downloading layer: sha256:2955fb827c947b782af190a759805d229cfebc75978dba2d01b4a59e6a333845
-    Downloading layer: sha256:55010f332b047687e081a9639fac04918552c144bc2da4edb3422ce8efcc1fb1
-    Downloading layer: sha256:b6f892c0043b37bd1834a4a1b7d68fe6421c6acbc7e7e63a4527e1d379f92c1b
-    Adding Docker CMD as Singularity runscript...
-    Bootstrap initialization
-    No bootstrap definition passed, updating container
-    Executing Prebootstrap module
-    Executing Postbootstrap module
-    Done.
+    Docker image path: index.docker.io/library/ubuntu:16.04
+    Cache folder set to /home/ubuntu/.singularity/docker
+    [5/5] |===================================| 100.0% 
+    Importing: base Singularity environment
+    Importing: /home/ubuntu/.singularity/docker/sha256:bd97b43c27e332fc4e00edf827bbc26369ad375187ce6eee91c616ad275884b1.tar.gz
+    Importing: /home/ubuntu/.singularity/docker/sha256:6960dc1aba1816652969986284410927a5d942bf8042e077a3ebc8d1c58bb432.tar.gz
+    Importing: /home/ubuntu/.singularity/docker/sha256:2b61829b0db5f4033ff48cbf3495271c8410c76e6396b56f15a79c3f7b5b7845.tar.gz
+    Importing: /home/ubuntu/.singularity/docker/sha256:1f88dc826b144c661a8d1d08561e1ff3711f527042955505e9f3e563bdb2281f.tar.gz
+    Importing: /home/ubuntu/.singularity/docker/sha256:73b3859b1e43f3ff32f10055951a568a9ad5ab6dc4ab61818b117b6912088f3d.tar.gz
+    Importing: /home/ubuntu/.singularity/metadata/sha256:fe44851d529f465f9aa107b32351c8a0a722fc0619a2a7c22b058084fac068a4.tar.gz
 
 Next, we start a root shell inside the container and install some software (3)
 
     sudo singularity exec -w testcontainer.img /bin/bash
+    sudo: unable to resolve host meltingpot
     root@meltingpot:/tmp# id
     uid=0(root) gid=0(root) groups=0(root)
 
@@ -88,9 +87,6 @@ Finally, download a sample gromacs file
 Enter the container using `bash`
 
     singularity exec testcontainer.img /bin/bash
-    groups: cannot find name for group ID 107
-    groups: cannot find name for group ID 110
-    groups: cannot find name for group ID 125
 
 You should find that you are now standard user inside your container and that the contents of `/tmp` are shared between host and container
 
@@ -111,7 +107,7 @@ While the test is running open up another terminal on your machine and verify us
     25328 stefan    39  19  534760 145088  15576 R 100,0  1,8   1:35.90 mdrun_mpi_d.ope                                                                                                                                                          
     25329 stefan    39  19  527960 139272  15252 R 100,0  1,8   1:35.90 mdrun_mpi_d.ope
 
-After a few minutes the test should have finished and you can exit the container. Note that performance may be worse than you're expected due to lacking AVX2 support!
+After a few minutes the test should have finished and you can exit the container. Note that performance may be worse than what you expected due to lacking AVX2 support!
 
     stefan@meltingpot:/tmp$ exit
 
