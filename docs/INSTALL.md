@@ -3,21 +3,21 @@
 ## Prerequisites
 
 You need a personal computer with root access to install singularity and create containers. 
-As of now the singularity runtime cannot be used under nonprivileged user accounts for that purpose, although this may become possible in future versions.
+As of now the singularity runtime cannot be used under nonprivileged user accounts for that purpose, although this may become possible in future versions. This document uses version 2.3 of singularity.
 
 ### RPM package
 
-[Download](../data/singularity-2.2.1-0.1.el7.x86_64.rpm "singularity version 2.2.1 stable 64 bit") the rpm package.
+[Download](../data/singularity-2.3-0.1.el7.x86_64.rpm "singularity version 2.3 stable 64 bit") the rpm package.
 
 This package is a custom build for RedHat 7 but should work also on CentOS, Fedora, OpenSuSE and similar distributions.
-Install it using `yum install singularity-2.2.1-0.1.el7.x86_64.rpm`
+Install it using `yum install singularity-2.3-0.1.el7.x86_64.rpm`
 
 ### DEB package
 
-[Download](../data/singularity-container_2.2-1_amd64.deb "singularity version 2.2.1 stable 64 bit") the deb package.
+[Download](../data/singularity-container_2.3-1_amd64.deb "singularity version 2.3 stable 64 bit") the deb package.
 
 This package is a custom build for Linux Mint 17 but should work also on Ubuntu 16.04 and Debian 7 and similar distributions.
-Install it using `apt install singularity-container_2.2-1_amd64.deb`
+Install it using `apt install singularity-container_2.3-1_amd64.deb`
 
 ## Creating a custom container
 
@@ -39,7 +39,7 @@ The procedure is as follows:
 At the beginning we create a container (1)
 
     cd /tmp
-    sudo singularity create -s 4096 testcontainer.img
+    singularity create -s 4096 testcontainer.img
     Creating a new image with a maximum size of 4096MiB...
     Executing image create helper
     Formatting image with ext3 file system
@@ -47,7 +47,7 @@ At the beginning we create a container (1)
 
 Now we can import a standard Ubuntu into it (2)
 
-    sudo singularity import testcontainer.img docker://ubuntu:16.04
+    singularity import testcontainer.img docker://ubuntu:16.04
     Downloading layer: sha256:a3ed95caeb02ffe68cdd9fd84406680ae93d633cb16422d00e8a7c22955b46d4
     Downloading layer: sha256:cf9722e506aada1109f5c00a9ba542a81c9e109606c01c81f5991b1f93de7b66
     Downloading layer: sha256:3deef3fcbd3072b45771bd0d192d4e5ff2b7310b99ea92bce062e01097953505
@@ -124,7 +124,7 @@ A few things must still be done to be able to redistribute this container:
 Singularity containers have an default run script under `/singularity`
 This is invoked if we execute the container like so
 
-    sudo chmod +x testcontainer.img
+    chmod +x testcontainer.img
     ./testcontainer.img
     
 So let's create a run script
