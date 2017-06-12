@@ -6,8 +6,8 @@ You need a personal computer with root access to install singularity and create 
 As of now the singularity runtime cannot be used under nonprivileged user accounts for that purpose, although this may become possible in future versions.
 
 ### RPM package
-.
-[Download](../data/singularity-2.2.1-0.1.el7.x86_64.rpm "singularity version 2.2.1 stable 64 bit") the rpm package
+
+[Download](../data/singularity-2.2.1-0.1.el7.x86_64.rpm "singularity version 2.2.1 stable 64 bit") the rpm package.
 
 This package is a custom build for RedHat 7 but should work also on CentOS, Fedora, OpenSuSE and similar distributions.
 Install it using `yum install singularity-2.2.1-0.1.el7.x86_64.rpm`
@@ -25,7 +25,7 @@ There are two main methods to create a custom container on a computer you have r
 1. Manually, step-by-step
 2. Using a bootstrap file
 
-We will demonstrate both methods using Ubuntu and the system repository to create a container running a MPI-enabled version of Gromacs.
+We will demonstrate both methods using Ubuntu and the packages offered by its system repository to create a container running a MPI-enabled version of Gromacs.
 
 ### Manual creation of a Gromacs container
 
@@ -43,7 +43,7 @@ At the beginning we create a container (1)
     Creating a new image with a maximum size of 4096MiB...
     Executing image create helper
     Formatting image with ext3 file system
-    Done.`
+    Done.
 
 Now we can import a standard Ubuntu into it (2)
 
@@ -84,15 +84,18 @@ There is still plenty of empty space available to add software or user data/scri
 Finally, download a sample gromacs file
 
     scp yourusername@justus:/opt/bwhpc/common/chem/gromacs/5.1.4/bwhpc-examples/ion_channel.tpr .
+    
+Enter the container using `bash`
+
     singularity exec testcontainer.img /bin/bash
     groups: cannot find name for group ID 107
     groups: cannot find name for group ID 110
     groups: cannot find name for group ID 125
-    stefan@meltingpot:~$ id
-    uid=1000(stefan) gid=1000(stefan) groups=1000(stefan),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),107,110,125,500090(vasp_users)
 
 You should find that you are now standard user inside your container and that the contents of `/tmp` are shared between host and container
 
+    stefan@meltingpot:/tmp$ id
+    uid=1000(stefan) gid=1000(stefan) groups=1000(stefan),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),107,110,125,500090(vasp_users)
     stefan@meltingpot:/tmp$ ls 
     firefox_stefan	hsperfdata_root  mintUpdate			       orbit-stefan  singularity-container_2.2-1_amd64.deb  singularity_2.2-1_amd64.changes  ssh-NUEP9lMyKHDt	tmp.uH2YJ6jpR1	tmpd_fYpy
     gpg-2xGcVB	ion_channel.tpr  openmpi-sessions-stefan@meltingpot_0  singularity   singularity-test.iDusMr		    sni-qt_keepassx_8967-rlxQtE      testcontainer.img	tmpGHNsdK

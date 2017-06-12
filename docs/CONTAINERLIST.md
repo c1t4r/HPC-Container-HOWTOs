@@ -5,8 +5,8 @@ Singularity container images are available under the following path: `/nfs/home1
 | Image Name | Contained Software | Accessible |
 |-------|:------------------:|----------------:|
 |DaCapo_VMD.sapp-2017-05-09-13-22.img|DaCapo,ASE,VMD...|everyone|
-|Vasp_VMD.sapp-2017-05-11-09-50.img|VASP,VMD|licencees only|
-|Gaussian_VMD.sapp-2017-05-17-11-41.img|Gaussian,VMD|licencees only|
+|Vasp_VMD.sapp-2017-05-11-09-50.img|VASP,VMD|licensees only|
+|Gaussian_VMD.sapp-2017-05-17-11-41.img|Gaussian,VMD|licensees only|
 
 Access is easy! Just login your ordinary justus account. Then:
 
@@ -28,3 +28,10 @@ If you have permissions you can copy the container image and customize it to you
     me@localpc: ~ $ scp justus:/nfs/home1/CiTAR/images/DaCapo_VMD.sapp-2017-05-09-13-22.img .
     
 Now you can use and modify the image as you wish and copy it later back to JUSTUS.
+
+## Using VMD
+
+If you want to use VMD for visualizing some results just use `-Y` for the ssh command.
+Here is an example of how that might look like :)
+
+![Vasp and VMD](VASP_and_VMD.png)
