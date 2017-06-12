@@ -194,7 +194,7 @@ This is a bootstrap definition file for the previous gromacs container:
 
 Copy and paste this snippet in your shell to create `gromacs_ubuntu.def` and simply run
 
-    sudo singularity create testcontainer2.img
+    singularity create testcontainer2.img
     sudo singularity bootstrap testcontainer2.img gromacs_ubuntu.def
     
 to create the same container in a single step.
