@@ -50,10 +50,6 @@ This is a bootstrap definition file for a gromacs container:
     OMP_NUM_THREADS=1 mpirun -n 2 mdrun_mpi_d.openmpi \
     mdrun -s /data/ion_channel.tpr -maxh 0.50 -noconfout -nsteps 500 -g logfile -v > /tmp/mdrun.out
 
-    %setup
-    mkdir -p $SINGULARITY_ROOTFS/data
-    cp ./ion_channel.tpr $SINGULARITY_ROOTFS/data
-    
     %files
     ./ion_channel.tpr /data/ion_channel.tpr
 
