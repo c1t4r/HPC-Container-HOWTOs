@@ -37,7 +37,7 @@ Bootstrap files serve as singularity container building scripts (comparable to w
 Once the installation procedure for a certain container has somewhat matured it is useful to create a bootstrap 
 file because it dramatically simplifies the rebuilding process for a custom container especially for end users.
 
-This is a bootstrap definition file for the previous gromacs container:
+This is a bootstrap definition file for a gromacs container:
 
     cat << EOF > gromacs_ubuntu.def
     BootStrap: docker
